@@ -12,9 +12,10 @@ def test_category_detail_view_status(client, categories, recipes):
 
 
 @pytest.mark.django_db
-def test_category_detail_view_recipes(client, categories, recipes):
+@pytest.mark.parametrize("category_index", [0, 1, 2])
+def test_category_detail_view(client, categories, recipes, category_index):
     """Test that the category detail view returns the correct recipes."""
-    category = categories[0]
+    category = categories[category_index]
     url = reverse("category_detail", args=[category.name])
     response = client.get(url)
 

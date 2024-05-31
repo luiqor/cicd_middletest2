@@ -2,7 +2,7 @@ import pytest
 from recipe.models import Category, Recipe
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def categories(db):
     """Create multiple category instances for testing."""
     category1 = Category.objects.create(name="category1")
@@ -11,7 +11,7 @@ def categories(db):
     return [category1, category2, category3]
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def recipes(categories, db):
     """Create multiple recipe instances for testing."""
     recipe1 = Recipe.objects.create(
