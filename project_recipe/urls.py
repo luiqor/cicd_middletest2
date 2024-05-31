@@ -6,5 +6,5 @@ from recipe.views import main, category_detail
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", main, name="main"),
-    path("category/<str:category_name>", category_detail, name="category_detail"),
+    path("category/<int:id>", category_detail, name="category_detail"),
 ]

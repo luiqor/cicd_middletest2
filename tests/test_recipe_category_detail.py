@@ -5,7 +5,7 @@ import pytest
 @pytest.mark.django_db
 def test_category_detail_view_status(client, categories, recipes):
     category = categories[0]
-    url = reverse("category_detail", args=[category.name])
+    url = reverse("category_detail", args=[category.id])
     response = client.get(url)
 
     assert response.status_code == 200
@@ -16,7 +16,7 @@ def test_category_detail_view_status(client, categories, recipes):
 def test_category_detail_view(client, categories, recipes, category_index):
     """Test that the category detail view returns the correct recipes."""
     category = categories[category_index]
-    url = reverse("category_detail", args=[category.name])
+    url = reverse("category_detail", args=[category.id])
     response = client.get(url)
 
     expected_recipes = category.categories.all()

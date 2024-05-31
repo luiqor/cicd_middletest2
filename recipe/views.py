@@ -16,17 +16,17 @@ def main(request):
     return render(request, "main.html", context={"recipes": random_recipies})
 
 
-def category_detail(request, category_name):
+def category_detail(request, id):
     """This view returns a list of recipes that belong to the category
-    by accessing 'category/category_name'
+    by accessing 'category/id'
     Args:
         request: The request object.
-        category_name: The name of the category.
+        id: The name of the category.
     Returns:
         category: The category object.
         recipes: A list of recipes that belong to the category.
     """
-    category = get_object_or_404(Category, name=category_name)
+    category = get_object_or_404(Category, id=id)
     recipes = category.categories.all()
     context = {
         "category": category,
